@@ -131,6 +131,11 @@ public class NotesControllerTest {
         // Then
         mockMvc.perform(delete("/api/notes/1"))
                 .andExpect(status().isOk());
+
+
+
+        verify(notesService, times(1)).deleteNote(2L);
+
     }
 
     @Test

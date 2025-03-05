@@ -77,7 +77,7 @@ public class NotesService {
     public void deleteNote(Long id) {
         log.info("Deleting note with ID {}", id);
         Note note = noteRepository.findById(id)
-        		.orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
+                .orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
         noteRepository.delete(note);
         log.info("Note with ID {} deleted successfully", id);
     }
@@ -105,7 +105,7 @@ public class NotesService {
     public Note getNoteById(Long id) {
         log.info("Fetching note with ID {}", id);
         return noteRepository.findById(id)
-        		.orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
+                .orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
     }
 
     /**
@@ -130,7 +130,7 @@ public class NotesService {
     public Integer getWordCount(Long id) {
         log.info("Getting word count for note with ID {}", id);
         Note note = noteRepository.findById(id)
-        		.orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
+                .orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
         int wordCount = note.getDescription().split("\\s+").length;  // Count words by spaces
         log.info("Note with ID {} has {} words", id, wordCount);
         return wordCount;
@@ -162,7 +162,7 @@ public class NotesService {
     public Note likeNote(Long id) {
         log.info("Liking note with ID {}", id);
         Note note = noteRepository.findById(id)
-        		.orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
+                .orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
         note.setLikes(note.getLikes() + 1);  // Increment the like count
         note.setTimestampUpdated(LocalDateTime.now());  // Update timestamp
         Note updatedNote = noteRepository.save(note);
@@ -180,7 +180,7 @@ public class NotesService {
     public Note unlikeNote(Long id) {
         log.info("Unliking note with ID {}", id);
         Note note = noteRepository.findById(id)
-        		.orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
+                .orElseThrow(() -> new NoteNotFoundException("Note with ID " + id + " not found"));
         note.setLikes(Math.max(note.getLikes() - 1, 0));  // Decrease the like count, but not below 0
         note.setTimestampUpdated(LocalDateTime.now());  // Update timestamp
         Note updatedNote = noteRepository.save(note);
@@ -209,9 +209,7 @@ public class NotesService {
         log.info("Fetching all available notes");
         return noteRepository.findAll();
     }
-    
-    
-    
+
 
     /**
      * Retrieves the top 5 most liked notes.
