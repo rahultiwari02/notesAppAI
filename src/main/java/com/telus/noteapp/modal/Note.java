@@ -1,4 +1,4 @@
-package com.telus.demo.modal;
+package com.telus.noteapp.modal;
 
 
 import jakarta.persistence.Entity;

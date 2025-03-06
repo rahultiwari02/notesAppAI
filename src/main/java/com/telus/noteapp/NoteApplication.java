@@ -1,4 +1,4 @@
-package com.telus.demo;
+package com.telus.noteapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
